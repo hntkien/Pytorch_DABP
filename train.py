@@ -6,9 +6,7 @@ import torch.nn as nn
 import test
 import mnist
 import mnistm
-from utils import save_model
-from utils import visualize
-from utils import set_model_mode
+from utils import save_model, visualize, set_model_mode
 import params
 
 # Source : 0, Target :1
@@ -17,7 +15,7 @@ target_test_loader = mnistm.mnistm_test_loader
 
 
 def source_only(encoder, classifier, source_train_loader, target_train_loader, save_name):
-    print("Source-only training")
+    print("-"*20 + "Source-only Training" + "-"*20)
     classifier_criterion = nn.CrossEntropyLoss().cuda()
     optimizer = optim.SGD(
         list(encoder.parameters()) +
@@ -59,7 +57,7 @@ def source_only(encoder, classifier, source_train_loader, target_train_loader, s
 
 
 def dann(encoder, classifier, discriminator, source_train_loader, target_train_loader, save_name):
-    print("DANN training")
+    print("-"*20 + "DANN Training" + "-"*20)
     
     classifier_criterion = nn.CrossEntropyLoss().cuda()
     discriminator_criterion = nn.CrossEntropyLoss().cuda()
@@ -121,5 +119,5 @@ def dann(encoder, classifier, discriminator, source_train_loader, target_train_l
         if (epoch + 1) % 10 == 0:
             test.tester(encoder, classifier, discriminator, source_test_loader, target_test_loader, training_mode='dann')
 
-    save_model(encoder, classifier, discriminator, 'source', save_name)
-    visualize(encoder, 'source', save_name)
+    save_model(encoder, classifier, discriminator, 'dann', save_name)
+    visualize(encoder, 'dann', save_name)

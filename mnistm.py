@@ -11,7 +11,7 @@ import params
 
 # MNIST-M
 class MNISTM(data.Dataset):
-    """`MNIST-M Dataset."""
+    """MNIST-M Dataset."""
 
     url = "https://github.com/VanushVaswani/keras_mnistm/releases/download/1.0/keras_mnistm.pkl.gz"
 
@@ -21,7 +21,7 @@ class MNISTM(data.Dataset):
     test_file = 'mnist_m_test.pt'
 
     def __init__(self,
-                 root, mnist_root="data",
+                 root, mnist_root="./Data",
                  train=True,
                  transform=None, target_transform=None,
                  download=False):
@@ -165,11 +165,11 @@ transform = transforms.Compose([transforms.ToTensor(),
                                                      [0.5])
                                 ])
 
-mnistm_train_dataset = MNISTM(root='data/pytorch/MNIST-M', train=True, download=True,
+mnistm_train_dataset = MNISTM(root='./Data/pytorch/MNIST-M', train=True, download=True,
                               transform=transform)
-mnistm_valid_dataset = MNISTM(root='data/pytorch/MNIST-M', train=True, download=True,
+mnistm_valid_dataset = MNISTM(root='./Data/pytorch/MNIST-M', train=True, download=True,
                               transform=transform)
-mnistm_test_dataset = MNISTM(root='data/pytorch/MNIST-M', train=False, transform=transform)
+mnistm_test_dataset = MNISTM(root='./Data/pytorch/MNIST-M', train=False, transform=transform)
 
 indices = list(range(len(mnistm_train_dataset)))
 validation_size = 5000

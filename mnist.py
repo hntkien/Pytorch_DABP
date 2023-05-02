@@ -4,16 +4,22 @@ from torchvision import transforms
 import torch
 import params
 
-transform = transforms.Compose([transforms.ToTensor(),
-                                transforms.Normalize([0.5],
-                                                     [0.5]),
-                                ])
+transform = transforms.Compose([
+    transforms.ToTensor(),
+    transforms.Normalize([0.5], [0.5])
+])
 
-mnist_train_dataset = datasets.MNIST(root='data/pytorch/MNIST', train=True, download=True,
-                                     transform=transform)
-mnist_valid_dataset = datasets.MNIST(root='data/pytorch/MNIST', train=True, download=True,
-                                     transform=transforms)
-mnist_test_dataset = datasets.MNIST(root='data/pytorch/MNIST', train=False, transform=transform)
+mnist_train_dataset = datasets.MNIST(root = './Data/pytorch/MNIST',
+                                     train = True,
+                                     download = True,
+                                     transform = transform)
+mnist_valid_dataset = datasets.MNIST(root = './Data/pytorch/MNIST',
+                                     train = True,
+                                     download = True,
+                                     transform = transforms)
+mnist_test_dataset = datasets.MNIST(root = './Data/pytorch/MNIST',
+                                    train = False,
+                                    transform = transform)
 
 indices = list(range(len(mnist_train_dataset)))
 validation_size = 5000

@@ -54,15 +54,16 @@ def one_hot_embedding(labels, num_classes=10):
 def save_model(encoder, classifier, discriminator, training_mode, save_name):
     print('Save models ...')
 
-    save_folder = 'trained_models'
+    save_folder = './DABP/trained_models'
     if not os.path.exists(save_folder):
         os.makedirs(save_folder)
 
-    torch.save(encoder.state_dict(), 'trained_models/encoder_' + str(training_mode) + '_' + str(save_name) + '.pt')
-    torch.save(classifier.state_dict(), 'trained_models/classifier_' + str(training_mode) + '_' + str(save_name) + '.pt')
+    torch.save(encoder.state_dict(), './DABP/trained_models/encoder_' + str(training_mode) + '_' + str(save_name) + '.pt')
+    torch.save(classifier.state_dict(), './DABP/trained_models/classifier_' + str(training_mode) + '_' + str(save_name) + '.pt')
 
     if training_mode == 'dann':
-        torch.save(discriminator.state_dict(), 'trained_models/discriminator_' + str(training_mode) + '_' + str(save_name) + '.pt')
+        torch.save(discriminator.state_dict(),
+                   './DABP/trained_models/discriminator_' + str(training_mode) + '_' + str(save_name) + '.pt')
 
     print('Model is saved !!!')
 
@@ -88,11 +89,11 @@ def plot_embedding(X, y, d, training_mode, save_name):
     if save_name is not None:
         plt.title(save_name)
 
-    save_folder = 'saved_plot'
+    save_folder = './HW3/saved_plot'
     if not os.path.exists(save_folder):
         os.makedirs(save_folder)
 
-    fig_name = 'saved_plot/' + str(training_mode) + '_' + str(save_name) + '.png'
+    fig_name = './HW3/saved_plot/' + str(training_mode) + '_' + str(save_name) + '.png'
     plt.savefig(fig_name)
     print('{} is saved'.format(fig_name))
 
