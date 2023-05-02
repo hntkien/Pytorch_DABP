@@ -3,7 +3,7 @@ import train
 import mnist
 import mnistm
 import model
-from utils import get_free_gpu
+# from utils import get_free_gpu
 
 save_name = 'omg'
 
@@ -20,7 +20,7 @@ def main():
         discriminator = model.Discriminator().cuda()
 
         train.source_only(encoder, classifier, source_train_loader, target_train_loader, save_name)
-        train.dann(encoder, classifier, discriminator, source_train_loader, target_train_loader, save_name)
+       # train.dann(encoder, classifier, discriminator, source_train_loader, target_train_loader, save_name)
 
     else:
         print("There is no GPU -_-!")

@@ -54,16 +54,16 @@ def one_hot_embedding(labels, num_classes=10):
 def save_model(encoder, classifier, discriminator, training_mode, save_name):
     print('Save models ...')
 
-    save_folder = './DABP/trained_models'
+    save_folder = './checkpoints/DABP/trained_models'
     if not os.path.exists(save_folder):
         os.makedirs(save_folder)
 
-    torch.save(encoder.state_dict(), './DABP/trained_models/encoder_' + str(training_mode) + '_' + str(save_name) + '.pt')
-    torch.save(classifier.state_dict(), './DABP/trained_models/classifier_' + str(training_mode) + '_' + str(save_name) + '.pt')
+    torch.save(encoder.state_dict(), './checkpoints/DABP/trained_models/encoder_' + str(training_mode) + '_' + str(save_name) + '.pt')
+    torch.save(classifier.state_dict(), './checkpoints/DABP/trained_models/classifier_' + str(training_mode) + '_' + str(save_name) + '.pt')
 
     if training_mode == 'dann':
         torch.save(discriminator.state_dict(),
-                   './DABP/trained_models/discriminator_' + str(training_mode) + '_' + str(save_name) + '.pt')
+                   './checkpoints/DABP/trained_models/discriminator_' + str(training_mode) + '_' + str(save_name) + '.pt')
 
     print('Model is saved !!!')
 
