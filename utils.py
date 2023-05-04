@@ -207,7 +207,7 @@ def visualize_input():
     dann_tsne = tsne.fit_transform(combined_feature.detach().cpu().numpy())
     print('Draw plot ...')
     save_name = 'input_tsne_plot'
-    plot_embedding(dann_tsne, combined_label_list, combined_domain_list, 'input', 'mnist_n_mnistM')
+    plot_embedding(dann_tsne, combined_label_list, combined_domain_list, 'input', save_name=save_name)
 
 
 def get_free_gpu():
